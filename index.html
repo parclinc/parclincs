@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Parclinc – Lincoln Parking Map</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+--green:#6DD063;
+--teal:#28AC95;
+--dark:#111;
+--light:#f5f7f9;
+}
+
+body{
+font-family:'Inter',sans-serif;
+margin:0;
+background:var(--light);
+color:#222;
+}
+
+/* HEADER */
+
+header{
+background:white;
+border-bottom:1px solid #eee;
+}
+
+.nav{
+max-width:1100px;
+margin:auto;
+padding:15px 20px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+}
+
+.logo{
+height:60px;
+}
+
+.nav-links a{
+margin-left:20px;
+text-decoration:none;
+color:#333;
+font-weight:500;
+}
+
+/* HERO */
+
+.hero{
+text-align:center;
+padding:60px 20px 40px;
+}
+
+.hero h1{
+font-size:36px;
+margin-bottom:10px;
+}
+
+.hero p{
+color:#666;
+max-width:600px;
+margin:auto;
+}
+
+/* CONTENT */
+
+.container{
+max-width:1000px;
+margin:auto;
+padding:20px;
+}
+
+/* MAP CARD */
+.parking-marker .pin {
+  width: 32px;
+  height: 32px;
+  background: #1E90FF; /* nice blue */
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  position: relative;
+  top: 0;
+  left: 0;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  font-family: 'Inter', sans-serif;
+}
+
+.parking-marker .pin span {
+  display: block;
+  transform: rotate(45deg);
+  line-height: 32px;
+}
+
+.card{
+background:white;
+border-radius:12px;
+box-shadow:0 6px 25px rgba(0,0,0,0.06);
+padding:20px;
+margin-top:20px;
+}
+
+.leaflet-popup-content {
+  font-family: 'Inter', sans-serif; /* match your page font */
+  font-size: 16px;                  /* readable size */
+  color: #222;                       /* dark text */
+  line-height: 1.4;                  /* nicer spacing */
+}
+
+#map{
+height:600px;
+border-radius:10px;
+}
+
+/* AD SPACE */
+
+.ad{
+background:#eef2f4;
+height:90px;
+display:flex;
+align-items:center;
+justify-content:center;
+margin:25px 0;
+border-radius:8px;
+font-size:14px;
+color:#777;
+}
+
+/* FOOTER */
+
+footer{
+text-align:center;
+padding:40px 20px;
+color:#777;
+font-size:14px;
+}
+
+/* MOBILE */
+
+@media (max-width:700px){
+
+.hero h1{
+font-size:28px;
+}
+
+#map{
+height:420px;
+}
+
+.nav-links{
+display:none;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="nav">
+
+<img src="parclinc.png" class="logo">
+
+<div class="nav-links">
+<a href="#">Home</a>
+<a href="about.html">About</a>
+</div>
+
+</div>
+
+</header>
+
+<section class="hero">
+
+<h1>Find Cheap Parking in Lincoln, No Sign-Up</h1>
+
+<p>
+Compare Lincoln city centre car park prices and save money.
+</p>
+
+</section>
+
+<div class="container">
+
+<div class="ad">
+Ad Space
+</div>
+
+<div class="card">
+
+<h2>Get Comparing ↓</h2>
+
+<div id="map"></div>
+
+</div>
+
+<div class="ad">
+Ad Space
+</div>
+
+</div>
+
+<footer>
+
+© 2026 Parclinc
+
+</footer>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+<script>
+
+var map = L.map('map').setView([53.2290, -0.5409], 15.5);
+
+var parkingDivIcon = L.divIcon({
+    className: 'parking-marker',
+    html: '<div class="pin"><span>P</span></div>',
+    iconSize: [32, 32],
+    iconAnchor: [16, 32],
+    popupAnchor: [0, -32]
+});
+
+L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+  attribution: '&copy; OpenStreetMap &copy; CARTO'
+}).addTo(map);
+
+L.marker([53.22756407945368, -0.5370932545635942], {icon: parkingDivIcon})
+  .addTo(map)
+  .bindPopup(`
+    <strong>Lincoln Central Car Park</strong><br>
+    1 hour: £2.60<br>
+    2 hours: £4.60<br>
+    3 hours: £6.70<br>
+    4 hours: £8.20<br>
+    Over 4 hours and up to 12 hours: £10.30<br>
+    Over 12 hours and up to 1 day: £11.30<br>
+    <a href="https://www.google.com/maps/dir/?api=1&destination=53.22756407945368,-0.5370932545635942" target="_blank">
+      Get Directions
+    </a>
+  `);
+
+L.marker([53.22912911857971, -0.5440577767158001], {icon: parkingDivIcon})
+  .addTo(map)
+  .bindPopup(`
+    <strong>Lucy Tower Street Car Park</strong><br>
+    1 hour: £2.40<br>
+    2 hours: £4.20<br>
+    3 hours: £6.40<br>
+    4 hours: £8.00<br>
+    Over 4 hours (up to 24 hours): £10.00<br>
+    <a href="https://www.google.com/maps/dir/?api=1&destination=53.22912911857971,-0.5440577767158001" target="_blank">
+      Get Directions
+    </a>
+  `);
+
+L.marker([53.231594225128404, -0.5416631350920545], {icon: parkingDivIcon})
+  .addTo(map)
+  .bindPopup(`
+    <strong>NCP Motherby Lane Car Park</strong><br>
+     1 hour	£3.00<br>
+1 to 2 hours	£5.00<br>
+2 to 3 hours	£7.00<br>
+3 to 24 hours £12.00<br>
+    <a href="https://www.google.com/maps/dir/?api=1&destination=53.231594225128404,-0.5416631350920545" target="_blank">
+      Get Directions
+    </a>
+  `);
+
+L.marker([53.230193873879045, -0.5367173636356615], {icon: parkingDivIcon})
+  .addTo(map)
+  .bindPopup(`
+    <strong>NCP Lincoln Central Car Park</strong><br>
+    1 hour	£4.00<br>
+1 to 2 hours	£8.00<br>
+2 to 3 hours	£12.00<br>
+3 to 24 hours £14.00<br>
+    <a href="https://www.google.com/maps/dir/?api=1&destination=53.230193873879045,-0.5367173636356615" target="_blank">
+      Get Directions
+    </a>
+  `);
+
+L.marker([53.231867919978214, -0.541214674488952], {icon: parkingDivIcon})
+  .addTo(map)
+  .bindPopup(`
+    <strong>Motherby Lane Car Park</strong><br>
+    1 hour: £2.40<br>
+    2 hours: £4.20<br>
+    3 hours: £6.40<br>
+    4 hours: £8.00<br>
+    Over 4 hours (up to 24 hours): £10.00<br>
+    <a href="https://www.google.com/maps/dir/?api=1&destination=53.231867919978214,-0.541214674488952" target="_blank">
+      Get Directions
+    </a>
+  `);
+
+L.marker([53.2313669974132, -0.5429742034091473], {icon: parkingDivIcon})
+  .addTo(map)
+  .bindPopup(`
+    <strong>Beaumont Fee Car Park</strong><br>
+    Prices coming soon...<br>
+    <a href="https://www.google.com/maps/dir/?api=1&destination=53.2313669974132,-0.5429742034091473" target="_blank">
+      Get Directions
+    </a>
+  `);
+
+L.marker([53.22742290143668, -0.5426139564231635], {icon: parkingDivIcon})
+  .addTo(map)
+  .bindPopup(`
+    <strong>NCP Lincoln High Street Car Park</strong><br>
+    1 hour	£3.50<br>
+1 to 2 hours	£7.00<br>
+2 to 3 hours	£10.00<br>
+3 to 24 hours £14.00<br>
+    <a href="https://www.google.com/maps/dir/?api=1&destination=53.22742290143668,-0.5426139564231635" target="_blank">
+      Get Directions
+    </a>
+  `);
+
+L.marker([53.227469446752224, -0.5418590503716535], {icon: parkingDivIcon})
+  .addTo(map)
+  .bindPopup(`
+    <strong>NCP Brayford Street Car Park</strong><br>
+    1 hour	£3.50<br>
+1 to 2 hours	£7.00<br>
+2 to 3 hours	£10.00<br>
+3 to 24 hours £14.00<br>
+    <a href="https://www.google.com/maps/dir/?api=1&destination=53.227469446752224,-0.5418590503716535" target="_blank">
+      Get Directions
+    </a>
+  `);
+
+L.marker([53.23147057537095, -0.5402508711515047], {icon: parkingDivIcon})
+  .addTo(map)
+  .bindPopup(`
+    <strong>NCP Steep Hill Car Park</strong><br>
+    1 hour	£3.00<br>
+1 to 2 hours	£5.00<br>
+2 to 3 hours	£7.00<br>
+3 to 24 hours £12.00<br>
+    <a href="https://www.google.com/maps/dir/?api=1&destination=53.23147057537095,-0.5402508711515047" target="_blank">
+      Get Directions
+    </a>
+  `);
+
+L.marker([53.2268121906561, -0.5396818383214695], {icon: parkingDivIcon})
+  .addTo(map)
+  .bindPopup(`
+    <strong>Lincoln Station Car Park (Short Stay)</strong><br>
+    (20 minutes maximum)<br>
+    <a href="https://www.google.com/maps/dir/?api=1&destination=53.2268121906561,-0.5396818383214695" target="_blank">
+      Get Directions
+    </a>
+  `);
+
+L.marker([53.22659615356506, -0.5388157417976486], {icon: parkingDivIcon})
+  .addTo(map)
+  .bindPopup(`
+    <strong>Lincoln Station Car Park (Long Stay)</strong><br>
+    Daily £8.50<br>
+    1 Week £26.00<br>
+    <a href="https://www.google.com/maps/dir/?api=1&destination=53.22659615356506,-0.5388157417976486" target="_blank">
+      Get Directions
+    </a>
+  `);
+
+L.marker([53.2308989130138, -0.5436634264009358], {icon: parkingDivIcon})
+  .addTo(map)
+  .bindPopup(`
+    <strong>Orchard Street Car Park</strong><br>
+    1 hour: £2.40<br>
+    2 hours: £4.20<br>
+    3 hours: £6.40<br>
+    4 hours: £8.00<br>
+    Over 4 hours (up to 24 hours): £10.00<br>
+    <a href="https://www.google.com/maps/dir/?api=1&destination=53.2308989130138,-0.5436634264009358" target="_blank">
+      Get Directions
+    </a>
+  `);
+
+L.marker([53.23136010414745, -0.53787046140929], {icon: parkingDivIcon})
+  .addTo(map)
+  .bindPopup(`
+    <strong>Grantham Street Car Park</strong><br>
+    Prices coming soon...<br>
+    <a href="https://www.google.com/maps/dir/?api=1&destination=53.23136010414745,-0.53787046140929" target="_blank">
+      Get Directions
+    </a>
+  `);
+
+L.marker([53.22548413099756, -0.5386824267316409], {icon: parkingDivIcon})
+  .addTo(map)
+  .bindPopup(`
+    <strong>Tentercroft Street Car Park</strong><br>
+    1 hour: £2.40<br>
+    2 hours: £4.20<br>
+    3 hours: £6.40<br>
+    4 hours: £8.00<br>
+    Over 4 hours (up to 24 hours): £10.00<br>
+    <a href="https://www.google.com/maps/dir/?api=1&destination=53.22548413099756,-0.5386824267316409" target="_blank">
+      Get Directions
+    </a>
+  `);
+
+L.marker([53.229528931768264, -0.5356566043286448], {icon: parkingDivIcon})
+  .addTo(map)
+  .bindPopup(`
+    <strong>Broadgate Car Park</strong><br>
+    1 hour: £2.20<br>
+    2 hours: £3.70<br>
+    3 hours: £5.40<br>
+    Over 3 hours (up to 24 hours): £7.40<br>
+    <a href="https://www.google.com/maps/dir/?api=1&destination=53.229528931768264,-0.5356566043286448" target="_blank">
+      Get Directions
+    </a>
+  `);
+
+
+
+</script>
+
+</body>
+
+</html>
