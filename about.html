@@ -1,7 +1,45 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <style>
+/* Hide burger and mobile menu by default */
+.burger, .mobile-menu{
+  display:none;
+}
+
+/* Mobile Styles */
+@media (max-width:700px){
+  .nav-links {
+    display:none; /* hide desktop links */
+  }
   
+  .burger {
+    display:block;
+    font-size:24px;
+    cursor:pointer;
+  }
+  
+  .mobile-menu {
+    display:none;
+    flex-direction: column;
+    background:white;
+    position:absolute;
+    top:60px; /* adjust if header height changes */
+    left:0;
+    width:100%;
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+    z-index:10;
+  }
+  
+  .mobile-menu a{
+    padding:15px 20px;
+    border-bottom:1px solid #eee;
+    color:#333;
+    text-decoration:none;
+    font-weight:500;
+  }
+}
+    </style>
 <link rel="icon" type="image/png" href="favicon-removebg-preview.png">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9004583184589710"
      crossorigin="anonymous"></script>
