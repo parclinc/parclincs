@@ -137,7 +137,26 @@ margin-top:20px;
   color: #333;
   font-family: 'Inter', sans-serif;
 }
+.table-scroll{
+width:100%;
+overflow-x:auto;
+}
 
+.parking-table{
+border-collapse:collapse;
+min-width:520px;
+width:100%;
+}
+
+.parking-table th,
+.parking-table td{
+padding:12px;
+text-align:left;
+}
+
+.parking-table th{
+background:#f0f3f5;
+}
 .steep {
   width: 32px;
   height: 32px;
@@ -282,7 +301,7 @@ Compare Lincoln city centre car park prices and save money.
 
 <h2>Cheapest Parking Near High Street</h2>
 
-<div class="table-wrap">
+<div class="table-scroll">
 
 <table class="parking-table">
 <tr>
@@ -343,7 +362,7 @@ Compare Lincoln city centre car park prices and save money.
 
 <h2>Cheapest Parking Near Cathedral & Castle</h2>
 
-<div class="table-wrap">
+<div class="table-scroll">
 
 <table class="parking-table">
 
