@@ -89,27 +89,69 @@ padding:40px 20px;
 color:#777;
 font-size:14px;
 }
+/* Hide burger and mobile menu by default */
+.burger, .mobile-menu{
+  display:none;
+}
 
+/* Mobile Styles */
+@media (max-width:700px){
+  .nav-links {
+    display:none; /* hide desktop links */
+  }
+  
+  .burger {
+    display:block;
+    font-size:24px;
+    cursor:pointer;
+  }
+  
+  .mobile-menu {
+    display:none;
+    flex-direction: column;
+    background:white;
+    position:absolute;
+    top:60px; /* adjust if header height changes */
+    left:0;
+    width:100%;
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+    z-index:10;
+  }
+  
+  .mobile-menu a{
+    padding:15px 20px;
+    border-bottom:1px solid #eee;
+    color:#333;
+    text-decoration:none;
+    font-weight:500;
+  }
+}
 </style>
 </head>
 
 <body>
 
 <header>
+  <div class="nav">
+    <img src="parkinginlincoln.jpg" class="logo">
 
-<div class="nav">
+    <!-- Desktop Links -->
+    <div class="nav-links">
+      <a href="#">Home</a>
+      <a href="lincoln-visitor-info.html">Visitor's Guide</a>
+      <a href="about.html">About</a>
+    </div>
 
-<a href="index.html">
-<img src="parkinginlincoln.jpg" class="logo">
-</a>
+    <!-- Mobile burger icon -->
+    <div class="burger" onclick="toggleMenu()">☰</div>
+  </div>
 
-<div class="nav-links">
-<a href="index.html">Home</a>
-<a href="about.html">About</a>
-</div>
-
-</div>
-
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#">Home</a>
+    <a href="lincoln-visitor-info.html">Visitor's Guide</a>
+    <a href="about.html">About</a>
+  </div>
 </header>
 
 <section class="hero">
@@ -213,6 +255,15 @@ The historic area around the cathedral and castle is located uphill from the mai
 © 2026 ParkingInLincoln
 
 </footer>
-
+<script>
+function toggleMenu(){
+  const menu = document.getElementById('mobileMenu');
+  if(menu.style.display === 'flex'){
+    menu.style.display = 'none';
+  } else {
+    menu.style.display = 'flex';
+  }
+}
+</script>
 </body>
 </html>
