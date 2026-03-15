@@ -7,140 +7,46 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      margin: 0;
-      background: #f5f7f9;
-      color: #222;
+    body { font-family:'Inter',sans-serif; margin:0; background:#f5f7f9; color:#222; }
+
+    header { background:white; border-bottom:1px solid #eee; }
+
+    .nav { max-width:1100px; margin:auto; padding:15px 20px; display:flex; justify-content:space-between; align-items:center; }
+
+    .logo{ height:45px; }
+
+    .nav-links a{ margin-left:20px; text-decoration:none; color:#333; font-weight:500; }
+
+    .hero { text-align:center; padding:60px 20px 40px; }
+
+    .hero h1 { font-size:32px; margin-bottom:10px; }
+
+    .container { max-width:1000px; margin:auto; padding:20px; }
+
+    .card { background:white; border-radius:12px; box-shadow:0 6px 25px rgba(0,0,0,0.06); padding:20px; margin-top:20px; }
+
+    h2 { margin-bottom:15px; }
+
+    footer { text-align:center; padding:40px 20px; color:#777; font-size:14px; }
+
+    /* Mobile Styles */
+    @media (max-width:700px){
+      .hero h1 { font-size:28px; }
+
+      /* Hide desktop links */
+      .nav-links { display:none; }
+
+      /* Burger icon */
+      .burger { display:block; font-size:24px; cursor:pointer; }
+
+      /* Mobile menu */
+      .mobile-menu { display:none; flex-direction: column; background:white; position:absolute; top:60px; left:0; width:100%; box-shadow:0 4px 10px rgba(0,0,0,0.1); z-index:10; }
+
+      .mobile-menu a{ padding:15px 20px; border-bottom:1px solid #eee; color:#333; text-decoration:none; font-weight:500; }
     }
 
-    header {
-      background: white;
-      border-bottom: 1px solid #eee;
-      padding: 15px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .logo {
-      height: 45px;
-    }
-
-    nav a {
-      margin-left: 20px;
-      text-decoration: none;
-      color: #333;
-      font-weight: 500;
-    }
-
-    .hero {
-      text-align: center;
-      padding: 60px 20px 40px;
-    }
-
-    .hero h1 {
-      font-size: 32px;
-      margin-bottom: 10px;
-    }
-
-    .container {
-      max-width: 1000px;
-      margin: auto;
-      padding: 20px;
-    }
-
-    .card {
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 6px 25px rgba(0,0,0,0.06);
-      padding: 20px;
-      margin-top: 20px;
-    }
-
-    h2 {
-      margin-bottom: 15px;
-    }
-
-    .parking-table {
-      width: 100%;
-      border-collapse: collapse;
-      min-width: 520px;
-      font-size: 15px;
-    }
-
-    .parking-table th,
-    .parking-table td {
-      padding: 12px;
-      text-align: left;
-      border-top: 1px solid #eee;
-    }
-
-    .parking-table th {
-      background: #f0f3f5;
-      font-weight: 600;
-    }
-
-    .parking-table tr:hover {
-      background: #f7fafb;
-    }
-
-    .table-scroll {
-      width: 100%;
-      overflow-x: auto;
-    }
-
-    footer {
-      text-align: center;
-      padding: 40px 20px;
-      color: #777;
-      font-size: 14px;
-    }
-
-    /* MOBILE */
-    @media (max-width:700px) {
-      .hero h1 {
-        font-size: 28px;
-      }
-    }
-
-/* Hide burger and mobile menu by default */
-.burger, .mobile-menu{
-  display:none;
-}
-
-/* Mobile Styles */
-@media (max-width:700px){
-  .nav-links {
-    display:none; /* hide desktop links */
-  }
-  
-  .burger {
-    display:block;
-    font-size:24px;
-    cursor:pointer;
-  }
-  
-  .mobile-menu {
-    display:none;
-    flex-direction: column;
-    background:white;
-    position:absolute;
-    top:60px; /* adjust if header height changes */
-    left:0;
-    width:100%;
-    box-shadow:0 4px 10px rgba(0,0,0,0.1);
-    z-index:10;
-  }
-  
-  .mobile-menu a{
-    padding:15px 20px;
-    border-bottom:1px solid #eee;
-    color:#333;
-    text-decoration:none;
-    font-weight:500;
-  }
-}
+    /* Hide burger and mobile menu by default */
+    .burger, .mobile-menu { display:none; }
   </style>
 </head>
 
@@ -176,24 +82,21 @@
 
 <div class="container">
 
-  <div class="container">
   <div class="card">
     <h2>Free Parking in Lincoln</h2>
-    <p>All on-street parking in Lincoln city centre is <strong>free on Sundays</strong>.</p>
-    <p>Outside meter hours (usually after 6 pm, Mon–Sat), parking in many bays and council car parks is also <strong>free overnight</strong>.</p>
-    <p>Check signage carefully — some restrictions may still apply, especially in permit zones or special event areas.</p>
-    <p>
-<a href="index.html">View the Lincoln Parking Map →</a>
-</p>
+    <p>All on-street parking in Lincoln city centre is <strong>free on Sundays</strong></p>
+    <p>Outside meter hours (usually after 6 pm, Mon–Sat), parking in many bays and council car parks is also <strong>free overnight</strong></p>
+    <p>Check signage carefully — some restrictions may still apply, especially in permit zones or special event areas</p>
+    <p><a href="index.html">View the Lincoln Parking Map →</a></p>
   </div>
 
   <div class="card">
     <h2>Tips for Free Parking</h2>
     <ul style="line-height:1.6;">
-      <li>Always check street signs before leaving your car.</li>
-      <li>Some bays are resident-only even on Sundays — avoid fines.</li>
-      <li>Arrive early near popular spots like the Cathedral or Castle to secure a space.</li>
-      <li>Walking from free on-street bays is often faster than paid car parks on busy days.</li>
+      <li>Always check street signs before leaving your car</li>
+      <li>Some bays are resident-only even on Sundays — avoid fines</li>
+      <li>Arrive early near popular spots like the Cathedral or Castle to secure a space</li>
+      <li>Walking from free on-street bays is often faster than paid car parks on busy days</li>
     </ul>
   </div>
 
@@ -202,6 +105,7 @@
 <footer>
   ParkingInLincoln. Making your trip to Lincoln easier.
 </footer>
+
 <script>
 function toggleMenu(){
   const menu = document.getElementById('mobileMenu');
@@ -212,5 +116,6 @@ function toggleMenu(){
   }
 }
 </script>
+
 </body>
 </html>
