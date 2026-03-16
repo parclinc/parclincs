@@ -306,6 +306,56 @@ display:none;
     font-weight:500;
   }
 }
+
+  .header-with-legend{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:12px;
+  flex-wrap:wrap;
+}
+
+.pin-legend{
+  display:flex;
+  gap:14px;
+}
+
+.legend-item{
+  display:flex;
+  align-items:center;
+  gap:5px;
+  font-size:12px;
+  color:#666;
+}
+
+.legend-pin{
+  width:16px;
+  height:16px;
+  border-radius:50% 50% 50% 0;
+  transform:rotate(-45deg);
+}
+
+/* colours */
+.legend-pin.public{background:#1E90FF;}
+.legend-pin.yps{background:#28AC95;}
+.legend-pin.attraction{background:#ff1e31;}
+
+
+/* MOBILE FIX */
+@media (max-width: 600px){
+
+  .header-with-legend{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:6px;
+  }
+
+  .pin-legend{
+    flex-wrap:wrap;
+    gap:10px;
+  }
+
+}
 /* Make affiliate ad image responsive */
 .ad-card img {
   width: 100%;
@@ -366,22 +416,23 @@ Compare Lincoln city centre car park prices and save money.
 
 <div class="container">
 
-<div class="card">
-<div class="header-with-legend" style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; margin-bottom:12px;">
-  <h2 style="margin:0;">Get Comparing ↓</h2>
+<div class="header-with-legend">
+  <h2>Get Comparing ↓</h2>
 
-  <div class="pin-legend" style="display:flex; gap:12px; flex-wrap:wrap;">
-    <div style="display:flex; align-items:center; gap:4px;">
-      <div style="width:16px; height:16px; background:#1E90FF; border-radius:50% 50% 50% 0; transform:rotate(-45deg);"></div>
-      <span style="font-size:12px; color:#666;">Public Car Park</span>
+  <div class="pin-legend">
+    <div class="legend-item">
+      <div class="legend-pin public"></div>
+      <span>Public Car Park</span>
     </div>
-    <div style="display:flex; align-items:center; gap:4px;">
-      <div style="width:16px; height:16px; background:#28AC95; border-radius:50% 50% 50% 0; transform:rotate(-45deg);"></div>
-      <span style="font-size:12px; color:#666;">YourParkingSpace</span>
+
+    <div class="legend-item">
+      <div class="legend-pin yps"></div>
+      <span>YourParkingSpace</span>
     </div>
-    <div style="display:flex; align-items:center; gap:4px;">
-      <div style="width:16px; height:16px; background:#ff1e31; border-radius:50% 50% 50% 0; transform:rotate(-45deg);"></div>
-      <span style="font-size:12px; color:#666;">Attractions</span>
+
+    <div class="legend-item">
+      <div class="legend-pin attraction"></div>
+      <span>Attractions</span>
     </div>
   </div>
 </div>
