@@ -288,7 +288,19 @@ display:none;
     font-weight:500;
   }
 }
+/* Make affiliate ad image responsive */
+.ad-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
 
+/* On small screens, add some max width or padding */
+@media (max-width: 700px) {
+  .ad-card img {
+    max-width: 90%;
+  }
+}
 </style>
 </head>
 
@@ -345,7 +357,7 @@ One finger to move, two to zoom...
 
 </div>
 <a rel="sponsored" href="https://www.awin1.com/cread.php?s=2730043&v=18633&q=398892&r=2814082" target="_blank" style="text-decoration:none; display:block; max-width:800px; margin:auto;">
-  <div class="card" style="text-align:center;">
+  <div class="card ad-card" style="text-align:center;">
     <h2 style="margin-bottom:5px;color:#28AC95;">Save Time & Money!</h2>
     <p style="margin:0 0 5px;color:#666;">Book your Lincoln parking instantly with <strong>YourParkingSpace</strong></p>
     <img src="ypspace.jpg" border="0" height:auto; border-radius:6px;">
