@@ -111,7 +111,25 @@ padding:20px;
   transform: rotate(45deg);
   line-height: 32px;
 }
+/* YourParkingSpace marker */
+.yps-marker .pin {
+  width: 32px;
+  height: 32px;
+  background: #28AC95; /* YourParkingSpace brand green */
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  position: relative;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  font-family: 'Inter', sans-serif;
+}
 
+.yps-marker .pin span {
+  display: block;
+  transform: rotate(45deg);
+  line-height: 32px;
+}
 .card{
 background:white;
 border-radius:12px;
@@ -847,7 +865,24 @@ L.marker([53.23537610839399, -0.5442310237198021], {icon: parkingDivIcon})
       Get Directions
     </a>
   `);
+// Create a Leaflet divIcon for YourParkingSpace
+var ypsIcon = L.divIcon({
+    className: 'yps-marker',
+    html: '<div class="pin"><span>Y</span></div>',
+    iconSize: [32, 32],
+    iconAnchor: [16, 32],
+    popupAnchor: [0, -32]
+});
 
+// Example: Add a YourParkingSpace pin to the map
+L.marker([53.230, -0.540], {icon: ypsIcon})
+  .addTo(map)
+  .bindPopup(`
+    <strong>YourParkingSpace - Lincoln Central</strong><br>
+    Book instantly & save time!<br>
+    <a href="https://tidd.ly/4cQA0U2" target="_blank">Book Now</a>
+  `);
+  
 </script>
 <script>
 function toggleMenu(){
