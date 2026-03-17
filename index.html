@@ -582,7 +582,7 @@ ParkingInLincoln. Making your trip to Lincoln easier.<br><br>
 
 <script>
 
-var map = L.map('map').setView([53.229951345018996, -0.5401324302893603], 15);
+var map = L.map('map').setView([53.229951345018996, -0.5401324302893603], 14);
 
 var parkingDivIcon = L.divIcon({
     className: 'parking-marker',
@@ -1000,12 +1000,29 @@ L.marker([53.23782081848929, -0.5403602479955992], {icon: ypsIcon})
     <a href="https://tidd.ly/4sxpVjT" target="_blank">Book Now</a>
   `);
   
-L.marker([53.2348, -0.5372], {icon: hotelIcon})
+L.marker([53.23477348495486, -0.5380455576213775], {icon: hotelIcon})
   .addTo(map)
   .bindPopup(`
-    <strong>Lincoln Hotel Deal</strong><br>
+    <strong>White Hart Hotel</strong><br>
+    (Dog Friendly)<br>
     Check price & availability<br>
-    <a href="YOUR_EXPEDIA_AFFILIATE_LINK" target="_blank">View Hotel</a>
+    <a href="https://expedia.com/affiliate/6e9Fw2z" target="_blank">View Hotel</a>
+  `);
+  
+L.marker([53.229708442350386, -0.5470854678885695], {icon: hotelIcon})
+  .addTo(map)
+  .bindPopup(`
+    <strong>Double Tree - Hilton</strong><br>
+    Check price & availability<br>
+    <a href="https://expedia.com/affiliate/6e9Fw2z" target="_blank">View Hotel</a>
+  `);
+  
+L.marker([53.229754098906206, -0.5463303196722522], {icon: hotelIcon})
+  .addTo(map)
+  .bindPopup(`
+    <strong>Holiday Inn</strong><br>
+    Check price & availability<br>
+    <a href="https://expedia.com/affiliate/6e9Fw2z" target="_blank">View Hotel</a>
   `);
   
 </script>
